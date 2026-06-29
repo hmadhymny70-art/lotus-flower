@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="زهرة اللوتس للتنظيف بالإمارات - تنظيف فلل ومجالس وخزانات باحترافية عالية. اتصل الآن 0504862006">
+  <meta property="og:title" content="زهرة اللوتس للتنظيف | الإمارات">
+  <meta property="og:description" content="تنظيف فلل ومجالس وخزانات باحترافية عالية في الإمارات">
+  <title>زهرة اللوتس للتنظيف | الإمارات</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #0B2C4A;
+      --primary-dk: #071C30;
+      --secondary:  #C9A84C;
+      --sec-light:  #F0D98A;
+      --green:      #25D366;
+      --white:      #FFFFFF;
+      --light:      #F7F9FC;
+      --gray:       #8094A6;
+      --text:       #1A2530;
+      --radius:     1.25rem;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      direction: rtl;
+      background: var(--light);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── Utility ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.35);
+      color: var(--secondary); padding: .35rem 1.1rem; border-radius: 50px;
+      font-size: .85rem; font-weight: 700; margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 900; color: var(--primary); line-height: 1.25;
+    }
+    .section-sub {
+      color: var(--gray); font-size: 1.05rem; line-height: 1.8;
+      font-weight: 500; margin-top: .6rem;
+    }
+
+    /* ── Animations ── */
+    .fade-up { opacity: 0; transform: translateY(40px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up.d1 { transition-delay: .1s; }
+    .fade-up.d2 { transition-delay: .2s; }
+    .fade-up.d3 { transition-delay: .3s; }
+    .fade-up.d4 { transition-delay: .4s; }
+
+    @keyframes float-btn { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: .5; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--primary);
+      padding: .85rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200;
+      box-shadow: 0 4px 24px rgba(0,0,0,.35);
+    }
+    .logo {
+      display: flex; align-items: center; gap: .55rem;
+      color: var(--white); font-size: 1.35rem; font-weight: 900;
+      text-decoration: none;
+    }
+    .logo .flower { font-size: 1.6rem; }
+    .logo span { color: var(--secondary); }
+    .header-call {
+      background: var(--secondary); color: var(--primary);
+      text-decoration: none; padding: .55rem 1.3rem;
+      border-radius: 50px; font-weight: 800; font-size: .95rem;
+      display: flex; align-items: center; gap: .4rem;
+      transition: all .3s;
+    }
+    .header-call:hover { transform: scale(1.06); background: var(--sec-light); }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative; min-height: 92vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, var(--primary) 0%, #0f3d5e 50%, #1a5276 100%);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80');
+      background-size: cover; background-position: center;
+      opacity: .12; mix-blend-mode: luminosity;
+    }
+    .hero-decor {
+      position: absolute; bottom: -60px; left: -60px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-decor2 {
+      position: absolute; top: -80px; right: -80px;
+      width: 450px; height: 450px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,211,102,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 3rem 1.5rem;
+      max-width: 720px; margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: var(--sec-light); padding: .4rem 1.3rem; border-radius: 50px;
+      font-size: .9rem; font-weight: 700; margin-bottom: 1.5rem;
+      backdrop-filter: blur(6px);
+    }
+    .hero h1 {
+      color: var(--white); font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 900; line-height: 1.2; margin-bottom: 1rem;
+    }
+    .hero h1 em { color: var(--secondary); font-style: normal; }
+    .hero p {
+      color: rgba(255,255,255,.82); font-size: 1.15rem;
+      line-height: 1.85; margin-bottom: 2.5rem; font-weight: 500;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-gold {
+      background: var(--secondary); color: var(--primary);
+      text-decoration: none; padding: 1rem 2.2rem; border-radius: 50px;
+      font-weight: 900; font-size: 1.1rem; font-family: 'Tajawal', sans-serif;
+      display: inline-flex; align-items: center; gap: .55rem;
+      transition: all .3s; box-shadow: 0 8px 28px rgba(201,168,76,.45);
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(201,168,76,.55); }
+    .btn-wp {
+      background: var(--green); color: var(--white);
+      text-decoration: none; padding: 1rem 2.2rem; border-radius: 50px;
+      font-weight: 900; font-size: 1.1rem; font-family: 'Tajawal', sans-serif;
+      display: inline-flex; align-items: center; gap: .55rem;
+      transition: all .3s; box-shadow: 0 8px 28px rgba(37,211,102,.4);
+    }
+    .btn-wp:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(37,211,102,.5); }
+
+    /* ── Stats Bar ── */
+    .stats {
+      background: var(--white);
+      box-shadow: 0 6px 40px rgba(0,0,0,.09);
+      border-radius: var(--radius);
+      margin: -2.5rem 1.25rem 0;
+      position: relative; z-index: 10;
+      padding: 1.5rem 2rem;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media(max-width:600px) { .stats { grid-template-columns: repeat(2,1fr); margin: -1.5rem .75rem 0; padding: 1.2rem 1rem; } }
+    .stat-item { text-align: center; }
+    .stat-item .num {
+      font-size: 2rem; font-weight: 900; color: var(--primary); line-height: 1;
+    }
+    .stat-item .num span { color: var(--secondary); }
+    .stat-item .lbl { font-size: .8rem; font-weight: 700; color: var(--gray); margin-top: .3rem; }
+    .stat-divider { width: 1px; background: #E5EAF0; align-self: stretch; justify-self: center; }
+    @media(max-width:600px) { .stat-divider { display: none; } }
+
+    /* ── Section Wrapper ── */
+    .section { padding: 5rem 0; }
+    .section.alt { background: var(--white); }
+    .section-head { text-align: center; margin-bottom: 3rem; }
+
+    /* ── Services ── */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+    }
+    @media(max-width:680px) { .services-grid { grid-template-columns: 1fr; } }
+    .service-card {
+      background: var(--white); border-radius: var(--radius);
+      overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      border: 1px solid #EBF0F6;
+      transition: all .4s; cursor: default;
+    }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(0,0,0,.14); }
+    .service-img {
+      width: 100%; height: 190px; object-fit: cover;
+      display: block; transition: transform .6s;
+    }
+    .service-card:hover .service-img { transform: scale(1.06); }
+    .service-img-wrap { overflow: hidden; position: relative; }
+    .service-icon-badge {
+      position: absolute; bottom: -1.1rem; right: 1.1rem;
+      width: 2.8rem; height: 2.8rem; border-radius: 12px;
+      background: var(--secondary); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: 0 4px 14px rgba(201,168,76,.45);
+      border: 2px solid var(--white);
+    }
+    .service-body { padding: 1.6rem 1.25rem 1.4rem; }
+    .service-body h3 { font-size: 1.2rem; font-weight: 800; color: var(--primary); margin-bottom: .5rem; }
+    .service-body p { font-size: .9rem; color: var(--gray); line-height: 1.75; font-weight: 500; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      color: var(--secondary); font-weight: 800; font-size: .9rem;
+      text-decoration: none; margin-top: 1rem;
+      transition: gap .3s;
+    }
+    .service-link:hover { gap: .65rem; }
+
+    /* ── Features ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem;
+    }
+    @media(max-width:580px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--white); padding: 1.4rem 1.25rem;
+      border-radius: var(--radius); border: 1px solid #EBF0F6;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      transition: all .35s;
+    }
+    .feature-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.1); }
+    .feature-icon {
+      width: 3rem; height: 3rem; border-radius: 12px;
+      background: rgba(11,44,74,.07); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .feature-item h4 { font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: .3rem; }
+    .feature-item p { font-size: .85rem; color: var(--gray); line-height: 1.65; font-weight: 500; }
+
+    /* ── Process ── */
+    .process-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;
+      position: relative;
+    }
+    @media(max-width:680px) { .process-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:400px) { .process-grid { grid-template-columns: 1fr; } }
+    .process-item { text-align: center; }
+    .process-num {
+      width: 3.5rem; height: 3.5rem; border-radius: 50%;
+      background: var(--primary); color: var(--secondary);
+      font-size: 1.3rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; position: relative;
+      box-shadow: 0 6px 20px rgba(11,44,74,.3);
+    }
+    .process-item h4 { font-size: 1rem; font-weight: 800; color: var(--primary); margin-bottom: .4rem; }
+    .process-item p { font-size: .85rem; color: var(--gray); line-height: 1.65; font-weight: 500; }
+
+    /* ── Offer Banner ── */
+    .offer-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, #0f3d5e 100%);
+      border-radius: var(--radius); padding: 2.5rem 2rem;
+      text-align: center; position: relative; overflow: hidden;
+      margin: 0 1.25rem;
+    }
+    .offer-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1200&q=80') center/cover;
+      opacity: .07;
+    }
+    .offer-banner h2 {
+      color: var(--white); font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900; margin-bottom: .75rem; position: relative;
+    }
+    .offer-banner p {
+      color: rgba(255,255,255,.8); font-size: 1.1rem;
+      font-weight: 500; margin-bottom: 2rem; position: relative;
+    }
+    .offer-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-gold-solid {
+      background: var(--secondary); color: var(--primary);
+      text-decoration: none; padding: 1rem 2.2rem; border-radius: 50px;
+      font-weight: 900; font-size: 1.05rem; font-family: 'Tajawal', sans-serif;
+      display: inline-flex; align-items: center; gap: .5rem;
+      transition: all .3s; box-shadow: 0 8px 28px rgba(201,168,76,.5);
+    }
+    .btn-gold-solid:hover { transform: translateY(-3px); }
+    .btn-wp-outline {
+      background: transparent; color: var(--white);
+      text-decoration: none; padding: 1rem 2.2rem; border-radius: 50px;
+      font-weight: 900; font-size: 1.05rem; font-family: 'Tajawal', sans-serif;
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 2px solid rgba(255,255,255,.35);
+      transition: all .3s;
+    }
+    .btn-wp-outline:hover { background: rgba(255,255,255,.12); transform: translateY(-3px); }
+
+    /* ── Testimonials ── */
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem;
+    }
+    @media(max-width:680px) { .testi-grid { grid-template-columns: 1fr; } }
+    .testi-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 1.5rem 1.25rem; border: 1px solid #EBF0F6;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+      transition: all .35s;
+    }
+    .testi-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,.1); }
+    .testi-stars { color: var(--secondary); font-size: 1rem; margin-bottom: .75rem; letter-spacing: .1em; }
+    .testi-text { font-size: .9rem; color: #4A5568; line-height: 1.8; font-weight: 500; margin-bottom: 1rem; }
+    .testi-author { display: flex; align-items: center; gap: .75rem; }
+    .testi-avatar {
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #1a5276);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-weight: 900; font-size: .9rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 800; color: var(--primary); font-size: .9rem; }
+    .testi-loc { font-size: .78rem; color: var(--gray); font-weight: 500; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--primary-dk);
+      padding: 3rem 1.25rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.8rem; font-weight: 900; color: var(--white); margin-bottom: .5rem;
+    }
+    .footer-logo span { color: var(--secondary); }
+    .footer-tagline { color: rgba(255,255,255,.55); font-size: .9rem; font-weight: 500; margin-bottom: 2rem; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,.1); margin: 1.5rem 0; }
+    .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+    .footer-copy { color: rgba(255,255,255,.5); font-size: .82rem; font-weight: 500; }
+    .footer-designer {
+      color: rgba(255,255,255,.5); font-size: .82rem; font-weight: 500;
+    }
+    .footer-designer a {
+      color: var(--secondary); text-decoration: none; font-weight: 700;
+      border-bottom: 1px dotted rgba(201,168,76,.5);
+      transition: color .3s;
+    }
+    .footer-designer a:hover { color: var(--sec-light); }
+
+    /* ── Floating Buttons ── */
+    .fab-group {
+      position: fixed; bottom: 1.75rem; left: 1.25rem;
+      display: flex; flex-direction: column; gap: .9rem;
+      z-index: 300;
+    }
+    .fab {
+      width: 3.6rem; height: 3.6rem; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.5rem;
+      box-shadow: 0 6px 24px rgba(0,0,0,.25);
+      animation: float-btn 3.5s ease-in-out infinite;
+      position: relative; transition: transform .3s;
+    }
+    .fab:hover { transform: scale(1.12) !important; animation: none; }
+    .fab-wp { background: var(--green); color: var(--white); animation-delay: 0s; }
+    .fab-tel { background: var(--secondary); color: var(--primary); animation-delay: .6s; }
+    .fab::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid currentColor; opacity: .4;
+      animation: pulse-ring 2.2s ease-out infinite;
+    }
+    .fab-wp::after { border-color: var(--green); }
+    .fab-tel::after { border-color: var(--secondary); }
+    .fab-label {
+      position: absolute; left: calc(100% + .75rem);
+      background: var(--white); color: var(--primary);
+      padding: .35rem .9rem; border-radius: 8px;
+      font-size: .8rem; font-weight: 800; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,.15);
+      opacity: 0; transform: translateX(8px);
+      transition: all .3s; pointer-events: none;
+    }
+    .fab:hover .fab-label { opacity: 1; transform: translateX(0); }
+
+    /* ── Phone display ── */
+    .phone-display {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3);
+      border-radius: 50px; padding: .5rem 1.4rem;
+      color: var(--secondary); font-weight: 800; font-size: 1.2rem;
+      margin-bottom: 2rem; direction: ltr;
+    }
+
+    /* Scroll top */
+    #scrollTop {
+      position: fixed; bottom: 1.75rem; right: 1.25rem;
+      width: 2.8rem; height: 2.8rem; border-radius: 50%;
+      background: var(--primary); color: var(--white);
+      border: none; font-size: 1.1rem; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25); z-index: 300;
+      display: none; align-items: center; justify-content: center;
+      transition: all .3s;
+    }
+    #scrollTop.show { display: flex; }
+    #scrollTop:hover { background: var(--secondary); color: var(--primary); transform: translateY(-3px); }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <a href="#" class="logo">
+      <span class="flower">🪷</span>
+      <span>زهرة <em style="color:var(--white)">اللوتس</em></span>
+    </a>
+    <a href="tel:0504862006" class="header-call">
+      <i class="fas fa-phone"></i>
+      اتصل بنا
+    </a>
+  </header>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-decor"></div>
+    <div class="hero-decor2"></div>
+    <div class="hero-content">
+      <div class="hero-badge fade-up">
+        <i class="fas fa-star"></i>
+        &nbsp;الإمارات العربية المتحدة &nbsp;
+        <i class="fas fa-star"></i>
+      </div>
+      <h1 class="fade-up d1">
+        نظافة استثنائية<br>
+        بلمسة <em>زهرة اللوتس</em>
+      </h1>
+      <p class="fade-up d2">
+        شركة متخصصة في تنظيف الفلل والمجالس والخزانات بالإمارات<br>
+        فريق محترف، معدات حديثة، نتائج تفوق توقعاتك
+      </p>
+      <div class="phone-display fade-up d2">
+        <i class="fas fa-phone-volume"></i>
+        0504862006
+      </div>
+      <div class="hero-btns fade-up d3">
+        <a href="tel:0504862006" class="btn-gold" onclick="trackContact()">
+          <i class="fas fa-phone"></i>
+          اتصل الآن
+        </a>
+        <a href="https://wa.me/971504862006" target="_blank" class="btn-wp" onclick="trackClickButton()">
+          <i class="fab fa-whatsapp"></i>
+          واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STATS ══ -->
+  <div class="stats fade-up">
+    <div class="stat-item">
+      <div class="num">١٠<span>+</span></div>
+      <div class="lbl">سنوات خبرة</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="num">٥٠٠<span>+</span></div>
+      <div class="lbl">عميل راضٍ</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="num">٢٤<span>/٧</span></div>
+      <div class="lbl">خدمة مستمرة</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div class="num">١٠٠<span>٪</span></div>
+      <div class="lbl">ضمان الجودة</div>
+    </div>
+  </div>
+
+  <!-- ══ SERVICES ══ -->
+  <section class="section" style="margin-top:3.5rem;">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-tag"><i class="fas fa-broom"></i>&nbsp; خدماتنا</div>
+        <h2 class="section-title">حلول تنظيف متكاملة</h2>
+        <p class="section-sub">نقدم خدمات تنظيف احترافية لكل ركن في منزلك أو منشأتك</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card fade-up d1">
+          <div class="service-img-wrap">
+            <img class="service-img"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"
+              alt="تنظيف الفلل" loading="lazy">
+            <div class="service-icon-badge"><i class="fas fa-home"></i></div>
+          </div>
+          <div class="service-body">
+            <h3>تنظيف الفلل</h3>
+            <p>تنظيف شامل ومعمق للفلل السكنية بالإمارات، من الأرضيات والجدران وحتى السقوف، مع استخدام منظفات آمنة وصديقة للبيئة.</p>
+            <a href="tel:0504862006" class="service-link" onclick="trackContact()">
+              احجز الآن <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card fade-up d2">
+          <div class="service-img-wrap">
+            <img class="service-img"
+              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80"
+              alt="تنظيف المجالس" loading="lazy">
+            <div class="service-icon-badge"><i class="fas fa-couch"></i></div>
+          </div>
+          <div class="service-body">
+            <h3>تنظيف المجالس</h3>
+            <p>تنظيف وتعقيم المجالس والكنب والسجاد والموكيت باستخدام أجهزة بخار متخصصة تزيل البقع والجراثيم بشكل تام.</p>
+            <a href="tel:0504862006" class="service-link" onclick="trackContact()">
+              احجز الآن <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card fade-up d3">
+          <div class="service-img-wrap">
+            <img class="service-img"
+              src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80"
+              alt="تنظيف الخزانات" loading="lazy">
+            <div class="service-icon-badge"><i class="fas fa-tint"></i></div>
+          </div>
+          <div class="service-body">
+            <h3>تنظيف الخزانات</h3>
+            <p>غسيل وتعقيم خزانات المياه بالمواد المعتمدة صحياً لضمان مياه نظيفة وآمنة لأسرتك في جميع أنحاء الإمارات.</p>
+            <a href="tel:0504862006" class="service-link" onclick="trackContact()">
+              احجز الآن <i class="fas fa-arrow-left"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES ══ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-tag"><i class="fas fa-shield-halved"></i>&nbsp; لماذا نحن؟</div>
+        <h2 class="section-title">ما يميز زهرة اللوتس</h2>
+        <p class="section-sub">نلتزم بأعلى معايير الجودة لنمنحك تجربة تنظيف لا مثيل لها</p>
+      </div>
+      <div class="features-grid">
+
+        <div class="feature-item fade-up d1">
+          <div class="feature-icon"><i class="fas fa-award"></i></div>
+          <div>
+            <h4>فريق مدرب ومحترف</h4>
+            <p>عمال مؤهلون ومدربون على أعلى مستوى من الاحترافية في التنظيف والتعقيم.</p>
+          </div>
+        </div>
+
+        <div class="feature-item fade-up d2">
+          <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+          <div>
+            <h4>منظفات آمنة وصديقة للبيئة</h4>
+            <p>نستخدم مواد تنظيف معتمدة، آمنة للأطفال والحيوانات الأليفة ولا تضر البيئة.</p>
+          </div>
+        </div>
+
+        <div class="feature-item fade-up d3">
+          <div class="feature-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>التزام بالمواعيد</h4>
+            <p>نحترم وقتك ونصل في الموعد المحدد دائماً، بدون تأخير أو مفاجآت.</p>
+          </div>
+        </div>
+
+        <div class="feature-item fade-up d4">
+          <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+          <div>
+            <h4>أسعار تنافسية</h4>
+            <p>أفضل جودة بأسعار مناسبة لجميع فئات العملاء مع عروض دورية وخصومات خاصة.</p>
+          </div>
+        </div>
+
+        <div class="feature-item fade-up d1">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <div>
+            <h4>دعم ٢٤ ساعة</h4>
+            <p>فريق خدمة العملاء متاح على مدار الساعة للرد على استفساراتك وحجز مواعيدك.</p>
+          </div>
+        </div>
+
+        <div class="feature-item fade-up d2">
+          <div class="feature-icon"><i class="fas fa-check-double"></i></div>
+          <div>
+            <h4>ضمان الرضا</h4>
+            <p>نضمن رضاك التام، وإذا لم تكن راضياً سنعيد الخدمة مجاناً حتى تصل لتوقعاتك.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROCESS ══ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-tag"><i class="fas fa-list-ol"></i>&nbsp; آلية العمل</div>
+        <h2 class="section-title">كيف نخدمك؟</h2>
+        <p class="section-sub">خطوات بسيطة للحصول على خدمة تنظيف مثالية</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-item fade-up d1">
+          <div class="process-num">١</div>
+          <h4>تواصل معنا</h4>
+          <p>اتصل أو أرسل واتساب وحدد نوع الخدمة المطلوبة.</p>
+        </div>
+        <div class="process-item fade-up d2">
+          <div class="process-num">٢</div>
+          <h4>تحديد الموعد</h4>
+          <p>نحدد معك أنسب وقت لإرسال فريق العمل.</p>
+        </div>
+        <div class="process-item fade-up d3">
+          <div class="process-num">٣</div>
+          <h4>التنظيف الشامل</h4>
+          <p>يصل فريقنا ويؤدي الخدمة باحترافية تامة.</p>
+        </div>
+        <div class="process-item fade-up d4">
+          <div class="process-num">٤</div>
+          <h4>التسليم والضمان</h4>
+          <p>نسلمك العمل بعد مراجعة الجودة ونضمن رضاك الكامل.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-head fade-up">
+        <div class="section-tag"><i class="fas fa-comments"></i>&nbsp; آراء عملائنا</div>
+        <h2 class="section-title">ماذا قالوا عنا؟</h2>
+      </div>
+      <div class="testi-grid">
+
+        <div class="testi-card fade-up d1">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">خدمة ممتازة جداً، نظفوا فيلتي من الألف للياء وبأسعار معقولة. الفريق كان محترم ومنظم وعملوا بسرعة.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">م.ع</div>
+            <div>
+              <div class="testi-name">محمد العلي</div>
+              <div class="testi-loc"><i class="fas fa-map-marker-alt" style="font-size:.7rem;color:var(--secondary)"></i> دبي</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up d2">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">تنظيف المجلس كان رائع، أزالوا بقع قديمة كنت أظن مستحيلة. شكراً لفريق زهرة اللوتس المتميز.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">ف.ك</div>
+            <div>
+              <div class="testi-name">فاطمة الكندي</div>
+              <div class="testi-loc"><i class="fas fa-map-marker-alt" style="font-size:.7rem;color:var(--secondary)"></i> أبوظبي</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up d3">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">غسلوا الخزان بطريقة علمية واحترافية وأعطوني شهادة معتمدة. أنصح بهم لكل أهل الإمارات.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">خ.م</div>
+            <div>
+              <div class="testi-name">خالد المنصوري</div>
+              <div class="testi-loc"><i class="fas fa-map-marker-alt" style="font-size:.7rem;color:var(--secondary)"></i> الشارقة</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ OFFER BANNER ══ -->
+  <section class="section">
+    <div class="offer-banner fade-up">
+      <h2>جاهزون لخدمتك الآن في الإمارات</h2>
+      <p>احجز الآن واحصل على تنظيف احترافي بأيدي فريق متخصص ومعتمد</p>
+      <div class="offer-btns">
+        <a href="tel:0504862006" class="btn-gold-solid" onclick="trackContact()">
+          <i class="fas fa-phone"></i>
+          0504862006
+        </a>
+        <a href="https://wa.me/971504862006" target="_blank" class="btn-wp-outline" onclick="trackClickButton()">
+          <i class="fab fa-whatsapp"></i>
+          تواصل واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-logo">
+      🪷 زهرة <span>اللوتس</span> للتنظيف
+    </div>
+    <p class="footer-tagline">خبرة وجودة لا مثيل لها في الإمارات العربية المتحدة</p>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p class="footer-designer">
+        تم التصميم بواسطة
+        <a href="https://wa.me/201029095046" target="_blank" rel="noopener">م. نجوى إبراهيم</a>
+      </p>
+      <p class="footer-copy">جميع الحقوق محفوظة &copy; ٢٠٢٥ — زهرة اللوتس للتنظيف</p>
+    </div>
+  </footer>
+
+  <!-- ══ FLOATING BUTTONS ══ -->
+  <div class="fab-group">
+    <a href="https://wa.me/971504862006" target="_blank" class="fab fab-wp" onclick="trackClickButton()" aria-label="واتساب">
+      <i class="fab fa-whatsapp"></i>
+      <span class="fab-label">تواصل عبر واتساب</span>
+    </a>
+    <a href="tel:0504862006" class="fab fab-tel" onclick="trackContact()" aria-label="اتصل بنا">
+      <i class="fas fa-phone"></i>
+      <span class="fab-label">اتصل بنا الآن</span>
+    </a>
+  </div>
+
+  <!-- Scroll to top -->
+  <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="أعلى الصفحة">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    /* ── Scroll animations ── */
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    /* ── Scroll-top button ── */
+    window.addEventListener('scroll', function() {
+      var btn = document.getElementById('scrollTop');
+      if (window.scrollY > 500) btn.classList.add('show');
+      else btn.classList.remove('show');
+    });
+
+    /* ── TikTok Pixel tracking helpers ── */
+    function trackContact() {
+      if (window.ttq) window.ttq.track('Contact');
+    }
+    function trackClickButton() {
+      if (window.ttq) window.ttq.track('ClickButton');
+    }
+
+    /* ── Counter animation for stats ── */
+    function animateCounters() {
+      document.querySelectorAll('.stat-item .num').forEach(function(el) {
+        var target = el.getAttribute('data-target');
+        if (!target) return;
+        var start = 0, end = parseInt(target), duration = 1800;
+        var step = Math.ceil(end / (duration / 16));
+        var timer = setInterval(function() {
+          start += step;
+          if (start >= end) { el.firstChild.nodeValue = end; clearInterval(timer); }
+          else el.firstChild.nodeValue = start;
+        }, 16);
+      });
+    }
+
+    /* trigger counters once stats enter view */
+    var statsEl = document.querySelector('.stats');
+    if (statsEl) {
+      var statsObs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { animateCounters(); statsObs.disconnect(); }
+      }, { threshold: 0.3 });
+      statsObs.observe(statsEl);
+    }
+  </script>
+
+</body>
+</html>
